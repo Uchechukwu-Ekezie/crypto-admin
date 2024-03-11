@@ -25,6 +25,12 @@
 
     --box-shadow: 0 2rem 3rem var(--color-light);
 }
+.dark-theme{
+    --color-white: #1131316;
+    --color-light: #23232a;
+    --color-dark: #ddd;
+    --color-gray-dark: #adacb5;
+}
 *{
     margin: 0;
     padding: 0;
@@ -125,16 +131,15 @@ small{
 }
 
 nav{
-    width: 100%;
+    max-width: 100%;
     background: var(--color-white);
-    padding: 1rem 0;
 }
 nav .container{
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    width: 96%;
+    width: 100%;
     margin: 0 auto;
 }
 nav img.logo{
@@ -310,7 +315,7 @@ main section.middle .cards .card{
     justify-content: space-between;
     box-shadow: 0 2rem 3rem var(--color-danger-light);
     transition: all 300ms ease;
-    min-width: 22rem;
+    min-width: 20rem;
 }
 main section.middle .cards .card:nth-child(2){
     background: linear-gradient(purple, #27282f);
@@ -510,4 +515,109 @@ main .recent-transactions .card-details .card{
     align-items: center;
     justify-content: center;
     border-radius: var(--border-radius-2);
+}
+/* media for tablet */
+
+@media screen and (max-width: 1024px){
+    nav .search-bar{
+        display: none;
+    }
+    nav .profile-area{
+        gap: 2rem;
+    }
+    nav .profile-area button#menu-btn{
+        display: inline;
+        background: transparent;
+        color: var(--color-dark);
+    }
+    main{
+        grid-template-columns: 1fr;
+    }
+    main aside{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        background-color: var(--color-white);
+        width: 22rem;
+        height: 100vh;
+        box-shadow: 2rem 0 2rem var(--color-primary-light);
+        display: none;
+        animation: showSidebar 500ms ease forwards;
+    }
+    
+    @keyframes showSiderbar{
+        to{
+            left: 0;
+        }
+    } 
+        
+   
+    main aside button#close-btn{
+        display: inline-block;
+        background: transparent;
+        color: var(--color-dark);
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 4;
+        width: 3rem;
+        height: 3rem;
+    }
+    button:hover{
+        cursor: pointer;
+    }
+    main aside .sidebar{
+        margin-top: 4rem;
+    }
+    main aside ,.update{
+        display: none;
+    }
+    main section.middle .cards{
+        grid-template-columns: 1fr 1fr;
+    }
+    main canvas{
+        margin: 3rem 0 1rem;
+    }
+    main section.right .recent-transactions{
+        margin-top: 3rem;
+    }
+    
+}
+
+/* media for smaller screen */
+@media screen and (max-width: 600px) {
+    nav .profile-area{
+        gap: 2.6rem;
+        margin-left: 10px;
+        justify-content: center;
+        
+    }
+    nav{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+       
+    }
+    nav .profile h5,
+    nav .profile span {
+        display: none;
+    }
+    main section.middle{
+     margin-right: 15px;
+    }
+    main section.middle .cards{
+        display: grid;
+        grid-template-columns: 1fr;
+       
+        /* gap: 1rem; */
+    }
+
+    main section.middle .fast-payment{
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 3rem;
+        gap: 1.4rem;
+    }
 }
